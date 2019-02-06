@@ -34,6 +34,8 @@ module BasicRest
 
     config.middleware.use Rack::Attack
 
+    config.middleware.use ActionDispatch::Flash
+
     config.middleware.insert_before 0, Rack::Cors do
 
      allow do

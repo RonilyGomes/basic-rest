@@ -8,13 +8,13 @@ class Api::V1::ContactsController < Api::V1::ApiController
 
  def index
    @contacts = current_user.contacts
-   render json: @contacts
+   render json: @contacts.as_json(except: [:id, :created_at, :user_id, :updated_at])
  end
 
  # GET /api/v1/contacts/1
 
  def show
-   render json: @contact
+   render json: @contact.as_json(except: [:id, :created_at, :user_id, :updated_at])
  end
 
  # POST /api/v1/contacts
@@ -53,11 +53,15 @@ class Api::V1::ContactsController < Api::V1::ApiController
      @contact = Contact.find(params[:id])
    end
 
+   def contact_params
+		params.permit(:name, :email, :phone, :description)
+   end
+
    # Only allow a trusted parameter "white list" through.
 
-   def contact_params
-     params.require(:contact).permit(:name, :email, :phone, :description)
-   end
+   # def contact_params
+   #   params.require(:contact).permit(:name, :email, :phone, :description)
+   # end
 
    def require_authorization!
      unless current_user == @contact.user

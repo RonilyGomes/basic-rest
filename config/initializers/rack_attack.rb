@@ -10,24 +10,16 @@ class Rack::Attack
 
  end
 
- # Allow an IP address to make 10 requests every 10 seconds
-
- throttle('req/ip', limit: 5, period: 5) do |req|
-
-   req.ip
-
- end
-
  # Throttle login attempts by email address
 
- #throttle("logins/email", limit: 5, period: 20.seconds) do |req|
-
- #  if req.path == '/users/sign_in' && req.post?
-
- #    req.params['email'].presence
-
- #  end
-
- #end
+#  throttle("/api/v1/contacts", limit: 1, period: 240.seconds) do |req|
+#
+#   if req.path == '/users/sign_in' && req.post?
+#
+#     req.params['email'].presence
+#
+#   end
+# #
+#  end
 
 end
