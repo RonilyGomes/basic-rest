@@ -11,12 +11,6 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
 # rack-cors
 gem 'rack-cors'
-# rack-attack
-gem 'rack-attack'
-# devise
-gem 'devise'
-# simple_token
-gem 'simple_token_authentication', '~> 1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
